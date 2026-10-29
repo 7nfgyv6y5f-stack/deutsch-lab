@@ -13,7 +13,7 @@ const starterCards = [
   { id: "a4", german: "im Gegensatz dazu", english: "in contrast to that", example: "Im Gegensatz dazu ist diese Regelung strenger.", category: "Academic" },
   { id: "l1", german: "personenbezogene Daten", english: "personal data", example: "Die DSGVO schützt personenbezogene Daten.", category: "Law" },
   { id: "l2", german: "die Einwilligung", english: "consent", example: "Die Einwilligung muss freiwillig erfolgen.", category: "Law" },
-  { id: "l3", german: "einen Anspruch geltend machen", english: "to assert a legal claim", example: "Die betroffene Person kann ihren Anspruch geltend machen.", category: "Law" },
+  { id: "l3", german: "einen Anspruch geltend machen", english: "to assert a:> legal claim", example: "Die betroffene Person kann ihren Anspruch geltend machen.", category: "Law" },
   { id: "l4", german: "die Rechtsgrundlage", english: "legal basis", example: "Für die Verarbeitung ist eine Rechtsgrundlage erforderlich.", category: "Law" },
   { id: "i1", german: "die Schleife", english: "loop (in programming)", example: "Die Schleife wiederholt den Vorgang fünfmal.", category: "Informatics" },
   { id: "i2", german: "die Variable", english: "variable", example: "Die Variable speichert einen Wert.", category: "Informatics" },
