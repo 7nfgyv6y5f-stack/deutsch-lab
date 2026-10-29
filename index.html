@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10272b">
+  <meta name="description" content="DeutschLab: a personal C1 German study space, built with HTML, CSS, and JavaScript.">
+  <title>DeutschLab | Your German, every day</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">D.</span><span>DeutschLab</span></div>
+      <div class="header-note">A tiny project, built by you. <span aria-hidden="true">✦</span></div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">YOUR PERSONAL LANGUAGE STUDIO / V1.0</p>
+      <h1 id="hero-title">Make German<br><em>your own.</em></h1>
+      <p class="hero-copy">From university lectures to confident conversations. Learn useful phrases, test your memory, and build your own vocabulary library.</p>
+      <div class="hero-badges"><span>🇩🇪 C1 German</span><span>⚖️ Legal German</span><span>💻 Informatics</span></div>
+      <div class="hero-ornament" aria-hidden="true">ä<br>ü</div>
+    </section>
+
+    <section class="stats" aria-label="Learning progress">
+      <div class="stat"><span class="stat-label">Words in your library</span><strong id="total-count">0</strong></div>
+      <div class="stat"><span class="stat-label">Words mastered</span><strong id="known-count">0</strong></div>
+      <div class="stat"><span class="stat-label">Last quiz score</span><strong id="last-score">—</strong></div>
+    </section>
+
+    <nav class="tabs" aria-label="Study areas">
+      <button type="button" class="tab active" data-tab="learn" aria-current="page">01 <span>Learn</span></button>
+      <button type="button" class="tab" data-tab="quiz">02 <span>Quiz</span></button>
+      <button type="button" class="tab" data-tab="library">03 <span>My Library</span></button>
+    </nav>
+
+    <section class="panel" id="learn-panel" aria-labelledby="learn-title">
+      <div class="section-heading"><div><p class="eyebrow">LEARN BY DOING</p><h2 id="learn-title">Your next flashcard</h2></div><span id="card-position" class="muted">1 / 1</span></div>
+      <div class="flashcard" id="flashcard" aria-live="polite">
+        <div class="card-top"><span class="pill" id="flash-category">Academic</span><span class="tiny">DE → EN</span></div>
+        <div class="card-middle"><p class="tiny">GERMAN EXPRESSION</p><h3 id="flash-german">Loading…</h3><div id="flash-answer" class="flash-answer" hidden><p id="flash-english"></p><p id="flash-example" class="example"></p></div></div>
+        <div class="card-bottom"><button type="button" id="listen-btn" class="text-button">🔊 Listen</button><span class="tiny">Reveal the meaning below</span></div>
+      </div>
+      <div class="study-actions">
+        <button type="button" id="previous-btn" class="button secondary">← Previous</button>
+        <button type="button" id="reveal-btn" class="button primary">Reveal answer</button>
+        <button type="button" id="next-btn" class="button secondary">Next →</button>
+      </div>
+      <div class="mastery-row"><button type="button" id="mastered-btn" class="button small outline">✓ Mark as mastered</button><p class="muted">Your progress is saved in this browser.</p></div>
+    </section>
+
+    <section class="panel" id="quiz-panel" aria-labelledby="quiz-title" hidden>
+      <div class="section-heading"><div><p class="eyebrow">ACTIVE RECALL</p><h2 id="quiz-title">Five-question challenge</h2></div><span class="pill">Practice makes progress</span></div>
+      <div id="quiz-intro"><p class="description">Choose the correct English meaning for each German expression. The questions come from your own vocabulary library.</p><button type="button" id="start-quiz-btn" class="button primary">Start the quiz →</button></div>
+      <div id="quiz-playing" hidden>
+        <div class="quiz-meta"><span id="quiz-counter">Question 1 of 5</span><span id="quiz-running-score">0 correct</span></div>
+        <div class="progress-track"><div id="quiz-progress" class="progress-fill"></div></div>
+        <p class="tiny">WHAT DOES THIS MEAN?</p><h3 id="quiz-word" class="quiz-word"></h3>
+        <div class="choices" id="quiz-choices"></div>
+        <p id="quiz-feedback" class="feedback" role="status"></p>
+        <button type="button" id="quiz-next-btn" class="button primary" hidden>Next question →</button>
+      </div>
+      <div id="quiz-finished" class="quiz-finished" hidden><div class="result-emoji">✦</div><p class="eyebrow">SESSION COMPLETE</p><h3 id="quiz-final-score"></h3><p id="quiz-final-message"></p><button type="button" id="quiz-again-btn" class="button primary">Try again</button></div>
+    </section>
+
+    <section class="panel" id="library-panel" aria-labelledby="library-title" hidden>
+      <div class="section-heading"><div><p class="eyebrow">GROW YOUR KNOWLEDGE</p><h2 id="library-title">My vocabulary library</h2></div><span class="pill">Make it personal</span></div>
+      <label class="filter-label" for="category-filter">Filter by subject</label>
+      <select id="category-filter"><option value="All">All subjects</option><option value="Academic">Academic</option><option value="Law">Law</option><option value="Informatics">Informatics</option><option value="Everyday">Everyday</option></select>
+      <div id="vocab-list" class="vocab-list"></div>
+      <div class="add-section">
+        <div><p class="eyebrow">BUILD YOUR OWN DATABASE</p><h3>Add a German expression</h3><p class="muted">Try a sentence you heard during a lecture today.</p></div>
+        <form id="add-form">
+          <div class="field-grid"><label>German expression <input name="german" maxlength="160" placeholder="etwas in Betracht ziehen" required></label><label>English meaning <input name="english" maxlength="160" placeholder="to take something into consideration" required></label></div>
+          <label>German example sentence <textarea name="example" maxlength="350" rows="2" placeholder="Wir müssen weitere Faktoren in Betracht ziehen." required></textarea></label>
+          <label>Subject <select name="category"><option>Academic</option><option>Law</option><option>Informatics</option><option>Everyday</option></select></label>
+          <div class="form-footer"><button class="button primary" type="submit">+ Add expression</button><span id="form-feedback" role="status"></span></div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer"><span>DeutschLab — one meaningful sentence at a time.</span><button type="button" id="reset-progress" class="text-button subtle">Reset learning progress</button></footer>
+  </main>
+</body>
+</html>
